@@ -6,19 +6,24 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     private Camera cam;
-    [SerializeField] private Transform lookAtTarget;
+    [SerializeField] private Transform goalPosRot;
 
     void Start() {
         cam = GetComponent<Camera>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    void Update() {
-        cam.transform.LookAt(Lerping());
+    void FixedUpdate() {
+        UpdatePosition();
+        UpdateRotation();
     }
 
-    private Vector3 Lerping() {
-        return Vector3.Lerp(transform.rotation * transform.forward, 
-            lookAtTarget.position, 
-            0.2f); 
+    private void UpdatePosition() {
+        transform.position = Vector3.Lerp(transform.position, goalPosRot.position, 0.1f); 
+    }
+
+    private void UpdateRotation() {
+        transform.rotation = Quaternion.Lerp(transform.rotation, goalPosRot.rotation, 0.1f); 
     }
 }
