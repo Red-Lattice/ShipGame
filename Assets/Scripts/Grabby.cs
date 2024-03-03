@@ -11,7 +11,7 @@ public class Grabby : MonoBehaviour
     private IGrabbable grabbedComponent;
     private Animator grabbedAnimator;
     private const float defaultCooldown = 1f;
-    private const float grabDistance = 100f;
+    private const float grabDistance = 500f;
     private LayerMask grabbable = 1 << 3;
     public Transform grabbyPoint;
     public Animator grabbyPointAnimator;
@@ -29,6 +29,7 @@ public class Grabby : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        laserLineRenderer.SetPosition(0, transform.position); 
         if (cooldown > 0f) {cooldown -= Time.deltaTime * 5f;}
         if (Input.GetMouseButtonDown(0) && cooldown <= 0f) {
             if (grabbing) {

@@ -6,7 +6,7 @@ public class ShipMovementScript : MonoBehaviour
 {
     [SerializeField] private CameraScript camScript;
     public Transform parentTransform;
-    public const float playerSpeed = 5f;
+    public const float playerSpeed = 10f;
     private const float sprintSpeedBoost = 2.5f;
     private float sensitivity = 5f;
     Vector2 currentLook;
