@@ -15,11 +15,16 @@ public class AsteroidSpawnerSingleton : MonoBehaviour
             Destroy(this);
         }
         Instance = this;
+        Initialize();
     }
 
     void Initialize() {
-        for (int i = 1; i <= 500; i++) {
-            Instantiate(asteroidSO.Asteroids[0]);
+        for (int i = 1; i <= 50; i++) {
+            Vector3 randomPos = new Vector3(
+                    Random.Range(-1f,1f),Random.Range(-1f,1f),Random.Range(-1f,1f))
+                .normalized 
+                * Random.Range(50f,300f);
+            Instantiate(asteroidSO.Asteroids[0], randomPos, Quaternion.identity);
         }
     }
 }
