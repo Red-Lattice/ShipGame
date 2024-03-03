@@ -16,12 +16,14 @@ public class Grabby : MonoBehaviour
     public Transform grabbyPoint;
     public Animator grabbyPointAnimator;
     public LineRenderer laserLineRenderer;
+    public GameObject effect;
     void Start()
     {
         cooldown = 0f;
         grabbing = false;
         grabbedComponent = null;
         grabbyPointAnimator = grabbyPoint.GetComponent<Animator>();
+        effect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,24 +43,22 @@ public class Grabby : MonoBehaviour
         cooldown = defaultCooldown;
         grabbyPointAnimator.Play("LaserFlash");
         
-        RaycastHit hit;
-
-        Vector3 forward = -1 * grabbyPoint.forward; // Grabby point is backwards lol
+        Vector3 forward = grabbyPoint.forward; 
         laserLineRenderer.SetPosition(0, transform.position); 
         laserLineRenderer.SetPosition(1, transform.position + (forward * grabDistance)); 
 
-        if (Physics.Raycast(transform.position, forward, out hit, grabDistance, grabbable))
-        {
-            IGrabbable grabbableComponent;
-            if (hit.transform.gameObject.TryGetComponent(out grabbableComponent))
-            {
-                grabbedComponent = grabbableComponent;
-                grabbableComponent.SubscribeToPosition(grabbyPoint);
-                grabbing = true;
-                grabbedAnimator = hit.transform.gameObject.AddComponent<Animator>();
-                grabbedAnimator.runtimeAnimatorController = AsteroidManager.Instance.asteroidAnimator.runtimeAnimatorController;
-            }
-        }
+        RaycastHit hit;
+        if (!Physics.Raycast(transform.position, forward, out hit, grabDistance, grabbable)) {return;}
+
+        if (!hit.transform.gameObject.TryGetComponent(out grabbedComponent)) {return;}
+        grabbedComponent.SubscribeToPosition(grabbyPoint);
+
+        grabbing = true;
+
+        grabbedAnimator = hit.transform.gameObject.AddComponent<Animator>();
+        grabbedAnimator.runtimeAnimatorController = 
+            AsteroidManager.Instance.asteroidAnimator.runtimeAnimatorController; // What the fuck
+        effect.SetActive(true);
     }
 
     private void Ungrab() {
@@ -69,5 +69,6 @@ public class Grabby : MonoBehaviour
         {
             Destroy(grabbedAnimator);
         }
+        effect.SetActive(false);
     }
 }
