@@ -17,7 +17,6 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
     void FixedUpdate() {
         Rotate();
         if (subscribedToTransform != null) {
-            Debug.Log("Moving?");
             transform.position = Vector3.Lerp(transform.position, subscribedToTransform.position, 0.1f);
         }
         transform.position += moveDirection * Time.deltaTime;

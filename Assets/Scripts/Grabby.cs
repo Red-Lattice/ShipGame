@@ -39,11 +39,15 @@ public class Grabby : MonoBehaviour
     private void Grab() {
         cooldown = defaultCooldown;
         grabbyPointAnimator.Play("LaserFlash");
+        
         RaycastHit hit;
+
         Vector3 forward = -1 * grabbyPoint.forward; // Grabby point is backwards lol
-        if (Physics.Raycast(grabbyPoint.position, forward, out hit, grabDistance, grabbable))
+        laserLineRenderer.SetPosition(0, transform.position); 
+        laserLineRenderer.SetPosition(1, transform.position + (forward * grabDistance)); 
+
+        if (Physics.Raycast(transform.position, forward, out hit, grabDistance, grabbable))
         {
-            Debug.Log("Anything");
             IGrabbable grabbableComponent;
             if (hit.transform.gameObject.TryGetComponent(out grabbableComponent))
             {
