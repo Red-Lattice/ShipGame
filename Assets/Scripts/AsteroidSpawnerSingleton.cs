@@ -24,7 +24,7 @@ public class AsteroidSpawnerSingleton : MonoBehaviour
                     Random.Range(-1f,1f),Random.Range(-1f,1f),Random.Range(-1f,1f))
                 .normalized 
                 * Random.Range(50f,300f);
-            Instantiate(asteroidSO.Asteroids[0], randomPos, Quaternion.identity);
+            Instantiate(asteroidSO.Asteroids[Random.Range(0,2)], randomPos, Quaternion.identity);
         }
     }
 }

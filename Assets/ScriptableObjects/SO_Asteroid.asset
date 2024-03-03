@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Asteroids:
   - {fileID: 9128962297886797392, guid: 23c15dea08632c641838146c24fd4995, type: 3}
+  - {fileID: 5452517191907478093, guid: cfc2926c914ebf445966a483f54660a7, type: 3}
