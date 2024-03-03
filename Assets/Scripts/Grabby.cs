@@ -8,7 +8,8 @@ public class Grabby : MonoBehaviour
 {
     private float cooldown;
     private bool grabbing;
-    private IGrabbable grabbedObject;
+    private IGrabbable grabbedComponent;
+    private Animator grabbedAnimator;
     private const float defaultCooldown = 1f;
     private const float grabDistance = 100f;
     private LayerMask grabbable = 1 << 3;
@@ -19,7 +20,7 @@ public class Grabby : MonoBehaviour
     {
         cooldown = 0f;
         grabbing = false;
-        grabbedObject = null;
+        grabbedComponent = null;
         grabbyPointAnimator = grabbyPoint.GetComponent<Animator>();
     }
 
@@ -51,16 +52,22 @@ public class Grabby : MonoBehaviour
             IGrabbable grabbableComponent;
             if (hit.transform.gameObject.TryGetComponent(out grabbableComponent))
             {
-                grabbedObject = grabbableComponent;
+                grabbedComponent = grabbableComponent;
                 grabbableComponent.SubscribeToPosition(grabbyPoint);
                 grabbing = true;
+                grabbedAnimator = hit.transform.gameObject.AddComponent<Animator>();
+                grabbedAnimator.runtimeAnimatorController = AsteroidManager.Instance.asteroidAnimator.runtimeAnimatorController;
             }
         }
     }
 
     private void Ungrab() {
-        grabbedObject.Launch(transform.forward);
-        grabbedObject = null;
+        grabbedComponent.Launch(transform.forward);
+        grabbedComponent = null;
         grabbing = false;
+        if (grabbedAnimator != null)
+        {
+            Destroy(grabbedAnimator);
+        }
     }
 }

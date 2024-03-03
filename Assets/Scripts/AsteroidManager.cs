@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AsteroidSpawnerSingleton : MonoBehaviour
+public class AsteroidManager : MonoBehaviour
 {
-    public static AsteroidSpawnerSingleton Instance;
+    public static AsteroidManager Instance;
     public static bool asteroidsSpawned;
     public static uint NumberOfAsteroidsToSpawn;
     public SO_Asteroids asteroidSO;
+    public Animator asteroidAnimator;
 
     void Awake() {
         if (Instance != null) {

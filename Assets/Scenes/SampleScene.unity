@@ -699,6 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidSO: {fileID: 11400000, guid: 3663394e3cef8714a92e9f1e15d4a8f7, type: 2}
+  asteroidAnimator: {fileID: 5262085326987199668, guid: a59d9f3f3732d8747a074b2cbecd0579, type: 3}
 --- !u!4 &1001000894
 Transform:
   m_ObjectHideFlags: 0
