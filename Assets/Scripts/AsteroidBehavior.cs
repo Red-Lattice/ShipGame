@@ -38,7 +38,7 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
 
     public void Launch(Vector3 direction)
     {
-        moveDirection = direction * -50f;
+        moveDirection = direction * -150f;
         subscribedToTransform = null;
     }
 
