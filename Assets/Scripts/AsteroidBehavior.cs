@@ -46,3 +46,4 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
         return objCollider;
     }
 }
+
