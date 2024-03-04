@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 214419410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraGoalPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578195627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 596140273}
   - component: {fileID: 596140275}
   - component: {fileID: 596140274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 902192083}
   - component: {fileID: 902192085}
   - component: {fileID: 902192084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 1001000894}
   - component: {fileID: 1001000893}
   m_Layer: 0
-  m_Name: AsteroidSpawner
+  m_Name: Asteroid God
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidSO: {fileID: 11400000, guid: 3663394e3cef8714a92e9f1e15d4a8f7, type: 2}
   asteroidAnimator: {fileID: 5262085326987199668, guid: a59d9f3f3732d8747a074b2cbecd0579, type: 3}
+  transformList: []
 --- !u!4 &1001000894
 Transform:
   m_ObjectHideFlags: 0
@@ -729,7 +730,7 @@ GameObject:
   - component: {fileID: 1035198264}
   - component: {fileID: 1035198263}
   - component: {fileID: 1035198266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1250062805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LookAtTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +892,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614496562}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7.6, y: 1, z: 2.26}
@@ -971,9 +972,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e65ec75618a8e784db985ac9ed5297f3, type: 2}
+    - target: {fileID: -1572586711821809039, guid: b06df63dd92002f47a4d4497cdbea85a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b06df63dd92002f47a4d4497cdbea85a, type: 3}
       propertyPath: m_Name
       value: Woah Ship Insnae
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b06df63dd92002f47a4d4497cdbea85a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383268781822205795, guid: b06df63dd92002f47a4d4497cdbea85a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391293104903087478, guid: b06df63dd92002f47a4d4497cdbea85a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8671336425327267968, guid: b06df63dd92002f47a4d4497cdbea85a, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1041,7 +1058,7 @@ GameObject:
   - component: {fileID: 2089392045}
   - component: {fileID: 2089392047}
   - component: {fileID: 2089392046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,6 +1194,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7327473861435740037, guid: 23c15dea08632c641838146c24fd4995, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8501466216488613098, guid: 23c15dea08632c641838146c24fd4995, type: 3}
       propertyPath: m_RootOrder
       value: 2

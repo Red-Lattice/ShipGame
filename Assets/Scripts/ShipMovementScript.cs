@@ -25,6 +25,10 @@ public class ShipMovementScript : MonoBehaviour
         currentLook = Vector2.Lerp(currentLook, currentLook, 0.8f);
     }
 
+    void OnTriggerEnter(Collider other) {
+        Destroy(this);
+    }
+
     void RotateMainCamera()
     {
         Vector2 mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));

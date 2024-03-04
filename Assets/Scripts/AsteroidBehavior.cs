@@ -8,6 +8,7 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
     private float rotationSpeed;
     private Transform subscribedToTransform = null;
     private Vector3 moveDirection = Vector3.zero;
+    public Collider objCollider;
     void Start()
     {
         rotationAxis = new(Random.Range(-1f,1f), Random.Range(-1f,1f), Random.Range(-1f,1f));
@@ -20,6 +21,7 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
             transform.position = Vector3.Lerp(transform.position, subscribedToTransform.position, 0.1f);
         }
         transform.position += moveDirection * Time.deltaTime;
+        if (transform.position.magnitude > 500f) {Destroy(this.transform.gameObject);}
     }
 
     /// <summary>
@@ -38,5 +40,9 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
     {
         moveDirection = direction * -50f;
         subscribedToTransform = null;
+    }
+
+    public Collider GetCollider() {
+        return objCollider;
     }
 }

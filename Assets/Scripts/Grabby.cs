@@ -60,6 +60,7 @@ public class Grabby : MonoBehaviour
         grabbedAnimator.runtimeAnimatorController = 
             AsteroidManager.Instance.asteroidAnimator.runtimeAnimatorController; // What the fuck
         effect.SetActive(true);
+        grabbedAnimator.transform.gameObject.layer = LayerMask.NameToLayer("Grabbed");
     }
 
     private void Ungrab() {
