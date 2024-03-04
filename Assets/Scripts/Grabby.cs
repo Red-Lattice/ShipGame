@@ -12,7 +12,7 @@ public class Grabby : MonoBehaviour
     private Animator grabbedAnimator;
     private const float defaultCooldown = 1f;
     private const float grabDistance = 500f;
-    private LayerMask grabbable = 1 << 3;
+    private LayerMask grabbable = 1 << 3 | 1 << 7;
     public Transform grabbyPoint;
     public Animator grabbyPointAnimator;
     public LineRenderer laserLineRenderer;
