@@ -11,6 +11,10 @@ public class ShipMovementScript : MonoBehaviour
     private float sensitivity = 5f;
     Vector2 currentLook;
 
+    void Awake() {
+        EnemyManagerSingleton.target = transform;
+    }
+
     void Update() {
         parentTransform.position -= parentTransform.forward * Speed();
     }

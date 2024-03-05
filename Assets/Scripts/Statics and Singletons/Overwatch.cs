@@ -14,4 +14,13 @@ public static class Overwatch
     public static bool GameWonCheck() {
         return destroyedAsteroids >= neededAsteroids;
     }
+
+    public static void GameStart() {
+        neededAsteroids = 2;
+    }
+
+    public static void StartNewWave() {
+        neededAsteroids += 2;
+        destroyedAsteroids = 0;
+    }
 }
