@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour
     private const float PERSUAL_COOLDOWN = 5f;
     private const float AWARENESS_RADIUS = 200f;
     private const float PERSUAL_TIME = 10f;
+    public GameObject explosionPrefab;
+    public GameObject explosionParticles;
 
     public Transform target;
     // Firing scriptable object
@@ -131,6 +133,9 @@ public class EnemyAI : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         Overwatch.AsteroidDestroyed();
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Instantiate(explosionParticles, transform.position, Quaternion.identity);
+        Destroy(transform.gameObject);
         Destroy(this);
     }
 }

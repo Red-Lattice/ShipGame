@@ -217,9 +217,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999eca74f0726a94fa87e0f5bffb1194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 5117042525302107906, guid: 3903a20054c049a478525f4a4d25b37f, type: 3}
+  explosionParticles: {fileID: 6260852702302323322, guid: 0ab8848a87ec4f3488614b1adf9efb35, type: 3}
   target: {fileID: 0}
+  fireCooldown: 0
+  persualCooldown: 0
   attacking: 0
   targetPos: {x: 0, y: 0, z: 0}
+  persuitTimer: 0
 --- !u!65 &5558897883619865155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -228,7 +233,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130008794601194928}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.9, y: 3.12, z: 21.89}
