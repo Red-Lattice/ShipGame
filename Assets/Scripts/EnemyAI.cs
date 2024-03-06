@@ -7,28 +7,40 @@ using System;
 public class EnemyAI : MonoBehaviour
 {
     //Parameters
-    private const float speed = .02f;
-    private const float fireCooldown = 0.5f;
-    private const float targetAttackCooldown = 5f;
-    private const float awarenessRadius = 200f;
+    private const float SPEED = .02f;
+    private const float FIRE_COOLDOWN = 0.5f;
+    private const float PERSUAL_COOLDOWN = 5f;
+    private const float AWARENESS_RADIUS = 200f;
+    private const float PERSUAL_TIME = 10f;
 
-    private Vector3 movement = Vector3.zero; // Encodes velocity
     public Transform target;
     // Firing scriptable object
-    private float currentCooldown = 0f;
-    private float currentTAC = 0f; // Target attack cooldown
+    public float fireCooldown = 0f;
+    /// <summary>
+    /// How long the enemy waits before persuing again.
+    /// </summary>
+    public float persualCooldown = 0f;
     private Vector3 goalPosition;
     public bool attacking;
     public Vector3 targetPos;
+    /// <summary>
+    /// This is how long the enemy will persue the player for.
+    /// </summary>
+    public float persuitTimer;
 
     void Start() {
         goalPosition = transform.position;
         target = EnemyManagerSingleton.target;
+        persuitTimer = 0f;
     }
 
     void FixedUpdate() {
         if (target != null) {targetPos = target.position;}
-        if (!attacking && target != null && currentTAC <= 0f && TargetDistanceCheck()) {StartAttacking();}
+
+        UpdateValues();
+
+        if (!attacking && target != null && persualCooldown >= PERSUAL_COOLDOWN && TargetDistanceCheck())
+            {StartAttacking();}
         
         SetNewDestination();
 
@@ -37,18 +49,28 @@ public class EnemyAI : MonoBehaviour
         UpdateRotation();
         UpdatePosition();
     }
+    void UpdateValues() {
+        fireCooldown += (fireCooldown >= FIRE_COOLDOWN) ? 0 : Time.fixedDeltaTime;
+        persuitTimer += (persuitTimer >= PERSUAL_TIME && attacking) ? 0 : Time.fixedDeltaTime;
+        persualCooldown += (persualCooldown >= PERSUAL_COOLDOWN && !attacking) ? 0 : Time.fixedDeltaTime;
+    }
 
     private void AttemptFire() {
-        currentCooldown -= (currentCooldown <= 0f) ? 0 : Time.fixedDeltaTime;
-
+        if (persuitTimer > PERSUAL_TIME) {StopFire(); return;}
         if (target == null || !attacking) {return;}
         if (!FiringAngle()) {return;}
-        if (currentCooldown > 0f) {return;}
+        if (fireCooldown > 0f) {return;}
         
         Fire();
     }
     private void Fire() {
 
+    }
+
+    private void StopFire() {
+        attacking = false;
+        persualCooldown = 0f;
+        persuitTimer = 0f;
     }
 
     /// <summary>
@@ -69,6 +91,7 @@ public class EnemyAI : MonoBehaviour
 
     void StartAttacking() {
         attacking = true;
+        persuitTimer = 0f;
     }
 
     private bool FiringAngle() {
@@ -77,7 +100,7 @@ public class EnemyAI : MonoBehaviour
 
     private bool TargetDistanceCheck() {
         return Vector3.Distance(targetPos, transform.position) 
-            <= awarenessRadius;
+            <= AWARENESS_RADIUS;
     }
 
     private void UpdatePosition() {
@@ -88,7 +111,7 @@ public class EnemyAI : MonoBehaviour
             Mathf.Clamp(
                 0.005f * Mathf.Sqrt(TargetDistance(targetPos)), 
                 Mathf.NegativeInfinity, 
-                speed) :
+                SPEED) :
             0.01f;
     }
 
