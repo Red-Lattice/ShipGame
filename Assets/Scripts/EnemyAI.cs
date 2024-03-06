@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     private const float PERSUAL_TIME = 10f;
     public GameObject explosionPrefab;
     public GameObject explosionParticles;
+    public GameObject bulletPrefab;
 
     public Transform target;
     // Firing scriptable object
@@ -52,7 +53,7 @@ public class EnemyAI : MonoBehaviour
         UpdatePosition();
     }
     void UpdateValues() {
-        fireCooldown += (fireCooldown >= FIRE_COOLDOWN) ? 0 : Time.fixedDeltaTime;
+        fireCooldown += (fireCooldown >= FIRE_COOLDOWN) ? 0 : Time.fixedDeltaTime; // 
         persuitTimer += (persuitTimer >= PERSUAL_TIME && attacking) ? 0 : Time.fixedDeltaTime;
         persualCooldown += (persualCooldown >= PERSUAL_COOLDOWN && !attacking) ? 0 : Time.fixedDeltaTime;
     }
@@ -61,12 +62,13 @@ public class EnemyAI : MonoBehaviour
         if (persuitTimer > PERSUAL_TIME) {StopFire(); return;}
         if (target == null || !attacking) {return;}
         if (!FiringAngle()) {return;}
-        if (fireCooldown > 0f) {return;}
+        if (fireCooldown < FIRE_COOLDOWN) {return;}
         
         Fire();
     }
     private void Fire() {
-
+        fireCooldown = 0f;
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
     }
 
     private void StopFire() {
@@ -97,7 +99,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     private bool FiringAngle() {
-        return Vector3.Angle(transform.forward, transform.position - target.position) < 1f;
+        return Vector3.Angle(transform.forward, target.position - transform.position) < 10f;
     }
 
     private bool TargetDistanceCheck() {

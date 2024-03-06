@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 5117042525302107906, guid: 3903a20054c049a478525f4a4d25b37f, type: 3}
   explosionParticles: {fileID: 6260852702302323322, guid: 0ab8848a87ec4f3488614b1adf9efb35, type: 3}
+  bulletPrefab: {fileID: 3569435646602908199, guid: ff22070a805e9854a94930190619ad27, type: 3}
   target: {fileID: 0}
   fireCooldown: 0
   persualCooldown: 0
