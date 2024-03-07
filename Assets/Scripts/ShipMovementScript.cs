@@ -12,8 +12,10 @@ public class ShipMovementScript : MonoBehaviour
     private float sensitivity = 5f;
     Vector2 currentLook;
     public Transform grabbyPointTransform;
+    public bool canMove;
 
     void Awake() {
+        canMove = false;
         EnemyManagerSingleton.target = transform;
         damageableComp = GetComponent<Damageable>();
     }
@@ -28,12 +30,14 @@ public class ShipMovementScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove) {return;}
+
         RotateMainCamera();
         currentLook = Vector2.Lerp(currentLook, currentLook, 0.8f);
     }
 
     void OnTriggerEnter(Collider other) {
-        damageableComp.DealDamage(999f);
+        damageableComp.DealDamage(Input.GetMouseButton(1) ? 999f : 25f);
     }
 
     private bool UpsideDown() {
