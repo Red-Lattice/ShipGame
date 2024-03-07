@@ -5,5 +5,10 @@ You've angered the physics police, oh no! And worse still, you are piloting a mi
 
 Well you can grab shit and fling it, better start throwing, in one way and not the other!
 
-# Progress
-The player can move around, asteroids get randomly spawned, you can grab them and throw them.
+# TODO (In order of priority):
+- Get a working title screen
+- Improve the UI
+- Add progressively more difficult waves
+- Add sound effects
+- Improve visuals
+- Add more enemy variety
