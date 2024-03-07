@@ -15,6 +15,7 @@ public class CameraScript : MonoBehaviour
     }
 
     void FixedUpdate() {
+        if (goalPosRot == null) {return;}
         UpdatePosition();
         UpdateRotation();
     }

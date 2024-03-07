@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipMovementScript : MonoBehaviour
 {
     [SerializeField] private CameraScript camScript;
+    public Damageable damageableComp;
     public Transform parentTransform;
     public const float playerSpeed = 10f;
     private const float sprintSpeedBoost = 2.5f;
@@ -13,6 +14,7 @@ public class ShipMovementScript : MonoBehaviour
 
     void Awake() {
         EnemyManagerSingleton.target = transform;
+        damageableComp = GetComponent<Damageable>();
     }
 
     void Update() {
@@ -30,7 +32,7 @@ public class ShipMovementScript : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        Destroy(this);
+        damageableComp.DealDamage(999f);
     }
 
     void RotateMainCamera()

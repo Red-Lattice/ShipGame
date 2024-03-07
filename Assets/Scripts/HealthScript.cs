@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthScript : MonoBehaviour
 {
     private const float maxHealth = 100f;
-    [SerializeField] private float health;
+    public float health {get; private set;}
     public Slider healthSlider;
     public Animator sliderAnimator;
     public Animator damageGradientAnimator;

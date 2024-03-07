@@ -25,7 +25,7 @@ public class AsteroidManager : MonoBehaviour
                     Random.Range(-1f,1f),Random.Range(-1f,1f),Random.Range(-1f,1f))
                 .normalized 
                 * Random.Range(50f,300f);
-            float randomScale = Random.Range(0.5f,3f);
+            float randomScale = Random.Range(0.5f,2f);
             Instantiate(asteroidSO.Asteroids[Random.Range(0,2)], randomPos, Quaternion.identity)
                 .transform.localScale *= randomScale;
         }

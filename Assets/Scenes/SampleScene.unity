@@ -1518,7 +1518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa719ea1de9907b4a8c345d96e5debd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   healthSlider: {fileID: 1600486094}
   sliderAnimator: {fileID: 1600486096}
   damageGradientAnimator: {fileID: 877517010}
@@ -1565,6 +1564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camScript: {fileID: 963194229}
+  damageableComp: {fileID: 0}
   parentTransform: {fileID: 1614496563}
 --- !u!65 &1614496565
 BoxCollider:
@@ -1608,6 +1608,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1600486095}
+  explosionPrefab: {fileID: 5117042525302107906, guid: 3903a20054c049a478525f4a4d25b37f, type: 3}
+  explosionParticles: {fileID: 6260852702302323322, guid: 0ab8848a87ec4f3488614b1adf9efb35, type: 3}
+  regularCanvas: {fileID: 1498725949}
+  deathCanvas: {fileID: 0}
 --- !u!1001 &1806974415
 PrefabInstance:
   m_ObjectHideFlags: 0
