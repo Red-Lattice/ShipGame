@@ -11,6 +11,7 @@ public class ShipMovementScript : MonoBehaviour
     private const float sprintSpeedBoost = 2.5f;
     private float sensitivity = 5f;
     Vector2 currentLook;
+    public Transform grabbyPointTransform;
 
     void Awake() {
         EnemyManagerSingleton.target = transform;
@@ -35,9 +36,15 @@ public class ShipMovementScript : MonoBehaviour
         damageableComp.DealDamage(999f);
     }
 
+    private bool UpsideDown() {
+        return transform.position.y < grabbyPointTransform.position.y;
+    }
+
     void RotateMainCamera()
     {
-        Vector2 mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 mouseInput = new Vector2(
+            (UpsideDown() ? -1f : 1) * Input.GetAxisRaw("Mouse X"), 
+            Input.GetAxisRaw("Mouse Y"));
         mouseInput.x *= sensitivity;
         mouseInput.y *= sensitivity;
 
