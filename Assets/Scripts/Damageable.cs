@@ -9,6 +9,7 @@ public class Damageable : MonoBehaviour
     public GameObject explosionParticles;
     public GameObject regularCanvas;
     public GameObject deathCanvas;
+    private Coroutine coro;
     public void DealDamage(float damage) {
         if (healthBar == null) {return;}
 
@@ -21,5 +22,8 @@ public class Damageable : MonoBehaviour
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         Destroy(regularCanvas);
         Destroy(transform.gameObject);
+        deathCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
