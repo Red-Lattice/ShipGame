@@ -16,11 +16,10 @@ public class EnemyManagerSingleton : MonoBehaviour
             return;
         }
         Instance = this;
-        Initialize();
     }
-    private static void Initialize() {
+    public static void Initialize(uint neededEnemies) {
         enemyList = new List<EnemyAI>();
-        for (int i = 1; i <= 4; ++i) {
+        for (int i = 1; i <= neededEnemies; ++i) {
             GameObject ship = Instantiate(Instance.enemies.Enemies[0]);
             ship.transform.position = EnemyAI.RandomVector() * Random.Range(150f,250f);
             enemyList.Add(ship.GetComponent<EnemyAI>());

@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Overwatch
+public class Overwatch : MonoBehaviour
 {
-    public static uint neededAsteroids {get; private set;}
-    public static uint destroyedAsteroids {get; private set;}
+    public static Overwatch Instance;
+    public uint neededAsteroids {get; private set;}
+    public uint destroyedAsteroids {get; private set;}
 
-    public static void AsteroidDestroyed() {
+    public void Awake() {
+        if (Instance != null) {
+            Destroy(this); return;
+        }
+        Instance = this;
+    }
+    public void AsteroidDestroyed() {
         ++destroyedAsteroids;
     }
 
-    public static bool GameWonCheck() {
+    public bool GameWonCheck() {
         return destroyedAsteroids >= neededAsteroids;
     }
 
-    public static void GameStart() {
-        neededAsteroids = 2;
+    private void GameStart() {
+        StartNewWave();
     }
 
-    public static void StartNewWave() {
+    public void StartNewWave() {
         neededAsteroids += 2;
         destroyedAsteroids = 0;
+        EnemyManagerSingleton.Initialize(neededAsteroids);
     }
 }

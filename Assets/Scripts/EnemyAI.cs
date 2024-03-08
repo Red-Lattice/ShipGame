@@ -134,7 +134,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        Overwatch.AsteroidDestroyed();
+        Overwatch.Instance.AsteroidDestroyed();
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         Destroy(transform.gameObject);
