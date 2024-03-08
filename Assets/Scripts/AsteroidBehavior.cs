@@ -21,7 +21,10 @@ public class AsteroidBehavior : MonoBehaviour, IGrabbable
             transform.position = Vector3.Lerp(transform.position, subscribedToTransform.position, 0.1f);
         }
         transform.position += moveDirection * Time.deltaTime;
-        if (transform.position.magnitude > 500f) {Destroy(this.transform.gameObject);}
+        if (transform.position.magnitude > 500f) {
+            Destroy(transform.gameObject);
+            AsteroidManager.Instance.AsteroidDestroyed();
+        }
     }
 
     /// <summary>

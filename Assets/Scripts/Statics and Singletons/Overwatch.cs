@@ -7,6 +7,7 @@ public class Overwatch : MonoBehaviour
     public static Overwatch Instance;
     public uint neededAsteroids {get; private set;}
     public uint destroyedAsteroids {get; private set;}
+    public int totalDestroyed {get; private set;}
 
     public void Awake() {
         if (Instance != null) {
@@ -16,6 +17,7 @@ public class Overwatch : MonoBehaviour
     }
     public void AsteroidDestroyed() {
         ++destroyedAsteroids;
+        ++totalDestroyed;
     }
 
     public bool GameWonCheck() {
@@ -30,5 +32,6 @@ public class Overwatch : MonoBehaviour
         neededAsteroids += 2;
         destroyedAsteroids = 0;
         EnemyManagerSingleton.Initialize(neededAsteroids);
+        AsteroidManager.Instance.FillInGaps();
     }
 }
