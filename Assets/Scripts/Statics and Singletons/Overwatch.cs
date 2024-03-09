@@ -9,6 +9,7 @@ public class Overwatch : MonoBehaviour
     public uint destroyedAsteroids {get; private set;}
     public int totalDestroyed {get; private set;}
     public int totalWaves {get; private set;}
+    public GameObject tutorialText;
 
     public void Awake() {
         if (Instance != null) {
@@ -16,6 +17,9 @@ public class Overwatch : MonoBehaviour
         }
         Instance = this;
         totalWaves = -1;
+        if (TutorialChecker.tutorialRan) {return;}
+        TutorialChecker.tutorialRan = true;
+        tutorialText.SetActive(true);
     }
     public void AsteroidDestroyed() {
         ++destroyedAsteroids;

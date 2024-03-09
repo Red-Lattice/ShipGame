@@ -6,6 +6,7 @@ public class CinematicScript : MonoBehaviour
 {
     public StaticSceneLoader loader;
     public void OnFadeComplete() {
+        TutorialChecker.tutorialRan = false;
         loader.LoadGame();
     }
 }
