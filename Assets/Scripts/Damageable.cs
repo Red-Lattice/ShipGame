@@ -10,6 +10,7 @@ public class Damageable : MonoBehaviour
     public GameObject regularCanvas;
     public GameObject deathCanvas;
     private Coroutine coro;
+    public RumbleManager rumbler;
     public void DealDamage(float damage) {
         if (healthBar == null) {return;}
 
@@ -25,5 +26,6 @@ public class Damageable : MonoBehaviour
         deathCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        rumbler.Stop();
     }
 }

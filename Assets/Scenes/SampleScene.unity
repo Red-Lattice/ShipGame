@@ -3238,6 +3238,7 @@ MonoBehaviour:
   explosionParticles: {fileID: 6260852702302323322, guid: 0ab8848a87ec4f3488614b1adf9efb35, type: 3}
   regularCanvas: {fileID: 1498725949}
   deathCanvas: {fileID: 470940945}
+  rumbler: {fileID: 963194232}
 --- !u!65 &1614496568
 BoxCollider:
   m_ObjectHideFlags: 0
