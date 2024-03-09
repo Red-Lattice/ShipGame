@@ -12,6 +12,7 @@ public class AsteroidManager : MonoBehaviour
     public Animator asteroidAnimator;
     public List<GameObject> asteroids;
     public int asteroidCount;
+    public int specialAsteroidCount;
 
     void Awake() {
         if (Instance != null) {
@@ -33,6 +34,14 @@ public class AsteroidManager : MonoBehaviour
             asteroids.Add(asteroid);
             asteroid.transform.localScale *= randomScale;
         }
+        for (int i = 1; i <= 3; i++) {
+            specialAsteroidCount++;
+            Vector3 randomPos = new Vector3(
+                    Random.Range(-1f,1f),Random.Range(-1f,1f),Random.Range(-1f,1f))
+                .normalized 
+                * Random.Range(50f,300f);
+            Instantiate(asteroidSO.SpecialAsteroids[0], randomPos, Quaternion.identity);
+        }
     }
 
     public void FillInGaps() {
@@ -46,6 +55,14 @@ public class AsteroidManager : MonoBehaviour
             GameObject asteroid = Instantiate(asteroidSO.Asteroids[Random.Range(0,2)], randomPos, Quaternion.identity);
             asteroids.Add(asteroid);
             asteroid.transform.localScale *= randomScale;
+        }
+        for (int i = 1; i <= 3; i++) {
+            specialAsteroidCount++;
+            Vector3 randomPos = new Vector3(
+                    Random.Range(-1f,1f),Random.Range(-1f,1f),Random.Range(-1f,1f))
+                .normalized 
+                * Random.Range(50f,300f);
+            Instantiate(asteroidSO.SpecialAsteroids[0], randomPos, Quaternion.identity);
         }
     }
 

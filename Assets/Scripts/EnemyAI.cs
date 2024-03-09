@@ -134,6 +134,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
+        if (other.transform.gameObject.layer == 6) {return;}
         Overwatch.Instance.AsteroidDestroyed();
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Instantiate(explosionParticles, transform.position, Quaternion.identity);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.WSA;
 
@@ -12,7 +13,7 @@ public class Grabby : MonoBehaviour
     private Animator grabbedAnimator;
     private const float defaultCooldown = 1f;
     private const float grabDistance = 500f;
-    private LayerMask grabbable = 1 << 3 | 1 << 7;
+    private LayerMask grabbable = 1 << 3 | 1 << 7 | 1 << 9;
     public Transform grabbyPoint;
     public Animator grabbyPointAnimator;
     public LineRenderer laserLineRenderer;
@@ -55,7 +56,7 @@ public class Grabby : MonoBehaviour
         grabbedComponent.SubscribeToPosition(grabbyPoint);
 
         grabbing = true;
-
+        if (!hit.transform.gameObject.TryGetComponent(out AsteroidBehavior _)) {return;}
         grabbedAnimator = hit.transform.gameObject.AddComponent<Animator>();
         grabbedAnimator.runtimeAnimatorController = 
             AsteroidManager.Instance.asteroidAnimator.runtimeAnimatorController; // What the fuck

@@ -2298,6 +2298,7 @@ MonoBehaviour:
   asteroidAnimator: {fileID: 5262085326987199668, guid: a59d9f3f3732d8747a074b2cbecd0579, type: 3}
   asteroids: []
   asteroidCount: 0
+  specialAsteroidCount: 0
 --- !u!4 &1001000894
 Transform:
   m_ObjectHideFlags: 0
