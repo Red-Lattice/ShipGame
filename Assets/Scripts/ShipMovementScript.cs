@@ -21,6 +21,7 @@ public class ShipMovementScript : MonoBehaviour
     }
 
     void Update() {
+        sensitivity = GameSettings.sensitivity;
         parentTransform.position -= parentTransform.forward * Speed();
     }
 
