@@ -14,17 +14,17 @@ public class CameraScript : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void FixedUpdate() {
+    void Update() {
         if (goalPosRot == null) {return;}
         UpdatePosition();
         UpdateRotation();
     }
 
     private void UpdatePosition() {
-        transform.position = Vector3.Lerp(transform.position, goalPosRot.position, 0.1f); 
+        transform.position = Vector3.Lerp(transform.position, goalPosRot.position, Time.deltaTime * 10f); 
     }
 
     private void UpdateRotation() {
-        transform.rotation = Quaternion.Lerp(transform.rotation, goalPosRot.rotation, 0.1f); 
+        transform.rotation = Quaternion.Lerp(transform.rotation, goalPosRot.rotation, Time.deltaTime * 10f); 
     }
 }
