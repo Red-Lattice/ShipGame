@@ -11,4 +11,8 @@ public class StaticSceneLoader : MonoBehaviour
     public void LoadGame() {
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
+
+    public void BeginYapping() {
+        SceneManager.LoadScene("Yapping", LoadSceneMode.Single);
+    }
 }
