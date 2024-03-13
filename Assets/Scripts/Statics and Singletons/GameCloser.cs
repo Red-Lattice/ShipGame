@@ -8,8 +8,7 @@ public class GameCloser : MonoBehaviour
         //Shamelessly stolen code from some guy on StackOverflow
         #if UNITY_STANDALONE
             Application.Quit();
-        #endif
-        #if UNITY_EDITOR
+        #elif UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }

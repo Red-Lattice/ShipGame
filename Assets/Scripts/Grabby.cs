@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class Grabby : MonoBehaviour
 {
@@ -18,8 +13,12 @@ public class Grabby : MonoBehaviour
     public Animator grabbyPointAnimator;
     public LineRenderer laserLineRenderer;
     public GameObject effect;
+    public AudioSource grabSound;
+    public AudioSource grabLaserSound;
     void Start()
     {
+        grabSound = GetComponent<AudioSource>();
+        grabSound.enabled = false;
         cooldown = 0f;
         grabbing = false;
         grabbedComponent = null;
@@ -44,6 +43,8 @@ public class Grabby : MonoBehaviour
     private void Grab() {
         cooldown = defaultCooldown;
         grabbyPointAnimator.Play("LaserFlash");
+        grabLaserSound.pitch = Random.Range(0.95f, 1.05f);
+        grabLaserSound.Play();
         
         Vector3 forward = grabbyPoint.forward; 
         laserLineRenderer.SetPosition(0, transform.position); 
@@ -56,6 +57,8 @@ public class Grabby : MonoBehaviour
         grabbedComponent.SubscribeToPosition(grabbyPoint);
 
         grabbing = true;
+        grabSound.enabled = true;
+
         if (!hit.transform.gameObject.TryGetComponent(out AsteroidBehavior _)) {return;}
         grabbedAnimator = hit.transform.gameObject.AddComponent<Animator>();
         grabbedAnimator.runtimeAnimatorController = 
@@ -68,6 +71,7 @@ public class Grabby : MonoBehaviour
         grabbedComponent.Launch(transform.forward);
         grabbedComponent = null;
         grabbing = false;
+        grabSound.enabled = false;
         if (grabbedAnimator != null)
         {
             Destroy(grabbedAnimator);

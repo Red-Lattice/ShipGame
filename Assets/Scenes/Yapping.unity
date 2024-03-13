@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -521,7 +521,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 261888
+    rgba: 4278451968
   m_fontColor: {r: 0, g: 1, b: 0.013520718, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -605,7 +605,6 @@ MonoBehaviour:
   charray: 
   displayingText: 
   overallAnimator: {fileID: 1192472279}
-  len: 0
 --- !u!1 &1616598256
 GameObject:
   m_ObjectHideFlags: 0

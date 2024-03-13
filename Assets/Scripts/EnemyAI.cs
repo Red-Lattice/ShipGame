@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using System;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -26,6 +22,8 @@ public class EnemyAI : MonoBehaviour
     private Vector3 goalPosition;
     public bool attacking;
     public Vector3 targetPos;
+
+    public AudioSource blasterNoise;
     /// <summary>
     /// This is how long the enemy will persue the player for.
     /// </summary>
@@ -35,6 +33,7 @@ public class EnemyAI : MonoBehaviour
         goalPosition = transform.position;
         target = EnemyManagerSingleton.target;
         persuitTimer = 0f;
+        blasterNoise = GetComponent<AudioSource>();
     }
 
     void FixedUpdate() {
@@ -69,6 +68,8 @@ public class EnemyAI : MonoBehaviour
     private void Fire() {
         fireCooldown = 0f;
         Instantiate(bulletPrefab, transform.position, transform.rotation);
+        blasterNoise.pitch = Random.Range(0.9f, 1.1f);
+        blasterNoise.Play();
     }
 
     private void StopFire() {
@@ -82,9 +83,9 @@ public class EnemyAI : MonoBehaviour
     /// </summary>
     public static Vector3 RandomVector() {
         return new Vector3(
-                UnityEngine.Random.Range(-1f,1f), 
-                UnityEngine.Random.Range(-1f,1f), 
-                UnityEngine.Random.Range(-1f,1f))
+                Random.Range(-1f,1f), 
+                Random.Range(-1f,1f), 
+                Random.Range(-1f,1f))
             .normalized;
     }
     private void SetNewDestination() {
